@@ -51,7 +51,7 @@ public class MessageController {
         return new ResponseEntity<String>("Message deleted", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Void> updateMessage(@RequestBody Message message){
         this.messageService.updateMessage(message.getIdMessage(),message);
         return new ResponseEntity<Void>(HttpStatus.CREATED);

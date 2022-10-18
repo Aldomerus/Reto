@@ -51,7 +51,7 @@ public class ClientController {
         return new ResponseEntity<String>("Client deleted", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Void> updateClient(@RequestBody Client client){
         this.clientService.updateClient(client.getIdClient(), client);
         return new ResponseEntity<Void>(HttpStatus.CREATED);

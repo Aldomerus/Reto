@@ -51,7 +51,7 @@ public class CategoryController {
         return new ResponseEntity<String>("Category deleted", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Void> updateCategory(@RequestBody Category category){
         this.categoryService.updateCategory(category.getId(), category);
         return new ResponseEntity<Void>(HttpStatus.CREATED);

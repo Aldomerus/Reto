@@ -51,7 +51,7 @@ public class FarmController {
         return new ResponseEntity<String>("Farm deleted", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update")
     public ResponseEntity<Void> updateFarm(@RequestBody Farm farm){
         this.farmService.updateFarm(farm.getId(), farm);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
