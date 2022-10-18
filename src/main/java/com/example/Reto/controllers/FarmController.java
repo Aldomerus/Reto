@@ -52,9 +52,9 @@ public class FarmController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateFarm(@PathVariable("id") int id, @RequestBody Farm farm){
-        this.farmService.updateFarm(id, farm);
-        return new ResponseEntity<String>("Farm updated", HttpStatus.CREATED);
+    public ResponseEntity<Void> updateFarm(@RequestBody Farm farm){
+        this.farmService.updateFarm(farm.getId(), farm);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }    
     
 } 

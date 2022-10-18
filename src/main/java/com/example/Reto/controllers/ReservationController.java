@@ -51,10 +51,10 @@ public class ReservationController {
         return new ResponseEntity<String>("Reservation deleted", HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateReservation(@PathVariable("id") int id, @RequestBody Reservation reservation){
-        this.reservationService.updateReservation(id, reservation);
-        return new ResponseEntity<String>("Reservation updated", HttpStatus.CREATED);
-    }    
+    @PutMapping("/update")
+    public ResponseEntity<Void> updateReservation(@RequestBody  Reservation reservation){
+        this.reservationService.updateReservation(reservation.getIdReservation(), reservation);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
     
 } 

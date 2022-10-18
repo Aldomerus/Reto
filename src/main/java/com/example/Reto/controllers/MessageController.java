@@ -52,9 +52,9 @@ public class MessageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateMessage(@PathVariable("id") int id, @RequestBody Message message){
-        this.messageService.updateMessage(id, message);
-        return new ResponseEntity<String>("Message updated", HttpStatus.CREATED);
+    public ResponseEntity<Void> updateMessage(@RequestBody Message message){
+        this.messageService.updateMessage(message.getIdMessage(),message);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }    
     
 } 

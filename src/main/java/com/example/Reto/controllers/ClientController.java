@@ -52,9 +52,10 @@ public class ClientController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateClient(@PathVariable("id") int id, @RequestBody Client client){
-        this.clientService.updateClient(id, client);
-        return new ResponseEntity<String>("Client updated", HttpStatus.CREATED);
+    public ResponseEntity<Void> updateClient(@RequestBody Client client){
+        this.clientService.updateClient(client.getIdClient(), client);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    
     }    
     
 } 
