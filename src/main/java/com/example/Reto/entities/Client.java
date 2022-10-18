@@ -23,14 +23,14 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "age")
     private Integer age;
@@ -52,7 +52,7 @@ public class Client implements Serializable {
     }
 
     // Geters and Seters
-    
+
     public Integer getIdClient() {
         return idClient;
     }
@@ -108,6 +108,5 @@ public class Client implements Serializable {
     public void setReservations(Set<Reservation> reservations) {
         this.reservations = reservations;
     }
-
 
 }

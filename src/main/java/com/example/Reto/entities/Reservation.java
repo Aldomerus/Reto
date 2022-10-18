@@ -23,7 +23,7 @@ public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
 
     @Column(name = "startDate")
     private Date startDate;
@@ -31,35 +31,43 @@ public class Reservation implements Serializable {
     @Column(name = "devolutionDate")
     private Date devolutionDate;
 
+    @Column(name = "status")
+    private String status;
+
+
     
     //Relaciones   
     //Una reservation tiene muchos clientes y farms
+    @ManyToOne(optional = false)
+    @JsonIgnoreProperties(value = {"reservations"})
+	@JoinColumn(name = "farm_id")
+	private Farm farm;
+
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = {"messages", "reservations"})
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-    @ManyToOne(optional = false)
-    @JsonIgnoreProperties(value = {"reservations"})
-	@JoinColumn(name = "farm_id")
-	private Farm farm;
+    @Column(name = "score")
+    private String score;
 
     //Relaciondevuelta
 
     // Constructor
 
     public Reservation() {
-
+        this.status = "created";
+        this.score = null;
     }
 
     // Geters and Seters    
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -78,12 +86,12 @@ public class Reservation implements Serializable {
         this.devolutionDate = devolutionDate;
     }
 
-    public Client getClient() {
-        return client;
+    public String getStatus() {
+        return status;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Farm getFarm() {
@@ -94,8 +102,24 @@ public class Reservation implements Serializable {
         this.farm = farm;
     }
 
-    // Geters and Seters
+    public Client getClient() {
+        return client;
+    }
 
- 
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+
+
+
 
 }

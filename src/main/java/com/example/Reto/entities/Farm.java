@@ -28,14 +28,14 @@ public class Farm implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "name")
+    private String name;
+    
     @Column(name = "address")
     private String address;
 
     @Column(name = "extension")
     private Integer extension;
-
-    @Column(name = "name")
-    private String name;
 
     @Column(name = "description")
     private String description;
