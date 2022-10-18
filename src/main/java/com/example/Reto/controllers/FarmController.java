@@ -40,8 +40,9 @@ public class FarmController {
         return new ResponseEntity<Farm>(this.farmService.getFarm(id), HttpStatus.OK);
     }
     @PostMapping ("/save")
-    public ResponseEntity<Farm> createFarm(@RequestBody Farm farm){
-        return new ResponseEntity<Farm>(this.farmService.createFarm(farm), HttpStatus.CREATED);
+    public ResponseEntity<Void> createFarm(@RequestBody Farm farm){
+        this.farmService.createFarm(farm);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
     @DeleteMapping("/{id}")

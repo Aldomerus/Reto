@@ -49,13 +49,12 @@ public class CategoryService {
         Category categoryDB = this.categoryRepository.findById(id).get();
 
         if (!this.categoryRepository.findById(id).isEmpty()) {
-            if(category.getName() != null){
+            if (category.getName() != null) {
                 categoryDB.setName((category.getName()));
             }
-            if(category.getDescription() != null){
+            if (category.getDescription() != null) {
                 categoryDB.setDescription((category.getDescription()));
             }
- 
 
             this.categoryRepository.save(categoryDB);
         }

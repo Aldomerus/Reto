@@ -1,21 +1,27 @@
 package com.example.Reto.entities;
 
-import java.util.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "client")
 public class Client implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idClient;
 
     @Column(name = "name")
     private String name;
@@ -23,28 +29,36 @@ public class Client implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "age")
     private Integer age;
 
-    @Column(name = "createdAt")
-    private Date createdAt;
+    // Relaciones
+    // Un client puede tener muchos messages y reservations
+    // Relacióvueltamessage
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private Set<Message> messages = new HashSet<>();
 
-    @Column(name = "updatedAt")
-    private Date updatedAt;
+    // Relacionvuelta reservation
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = { "client" })
+    private Set<Reservation> reservations = new HashSet<>();
     // Constructor
-    
+
     public Client() {
-        this.createdAt = new Date();
+
     }
 
     // Geters and Seters
-
-    public Integer getId() {
-        return id;
+    
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {
@@ -63,6 +77,14 @@ public class Client implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -71,22 +93,21 @@ public class Client implements Serializable {
         this.age = age;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Set<Message> getMessages() {
+        return messages;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public Set<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
-    
 
 }

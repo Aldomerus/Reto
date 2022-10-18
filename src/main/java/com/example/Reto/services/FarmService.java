@@ -55,11 +55,11 @@ public class FarmService {
             if(farm.getExtension() != null){
                 farmDB.setExtension(farm.getExtension());
             }
-            if(farm.getCategory_id() != null){
-                farmDB.setCategory_id(farm.getCategory_id());
-            }
             if(farm.getName() != null){
                 farmDB.setName(farm.getName());
+            }
+            if(farm.getDescription() != null){
+                farmDB.setDescription(farm.getDescription());
             }
             this.farmRepository.save(farmDB);
         }

@@ -40,8 +40,9 @@ public class MessageController {
         return new ResponseEntity<Message>(this.messageService.getMessage(id), HttpStatus.OK);
     }
     @PostMapping ("/save")
-    public ResponseEntity<Message> createMessage(@RequestBody Message message){
-        return new ResponseEntity<Message>(this.messageService.createMessage(message), HttpStatus.CREATED);
+    public ResponseEntity<Void> createMessage(@RequestBody Message message){
+        this.messageService.createMessage(message);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
     @DeleteMapping("/{id}")

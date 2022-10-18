@@ -40,8 +40,9 @@ public class ClientController {
         return new ResponseEntity<Client>(this.clientService.getClient(id), HttpStatus.OK);
     }
     @PostMapping ("/save")
-    public ResponseEntity<Client> createClient(@RequestBody Client client){
-        return new ResponseEntity<Client>(this.clientService.createClient(client), HttpStatus.CREATED);
+    public ResponseEntity<Void> createClient(@RequestBody Client client){
+        this.clientService.createClient(client);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
     @DeleteMapping("/{id}")

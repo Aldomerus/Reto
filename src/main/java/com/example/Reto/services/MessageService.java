@@ -49,8 +49,8 @@ public class MessageService {
         Message messageDB = this.messageRepository.findById(id).get();
 
         if (!this.messageRepository.findById(id).isEmpty()) {
-            if(message.getMessagetext() != null){
-                messageDB.setMessagetext((message.getMessagetext()));
+            if(message.getMessageText() != null){
+                messageDB.setMessageText((message.getMessageText()));
             }
 
             this.messageRepository.save(messageDB);

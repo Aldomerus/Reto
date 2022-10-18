@@ -40,8 +40,9 @@ public class CategoryController {
         return new ResponseEntity<Category>(this.categoryService.getCategory(id), HttpStatus.OK);
     }
     @PostMapping ("/save")
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
-        return new ResponseEntity<Category>(this.categoryService.createCategory(category), HttpStatus.CREATED);
+    public ResponseEntity<Void> createCategory(@RequestBody Category category){
+        this.categoryService.createCategory(category);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
     @DeleteMapping("/{id}")
